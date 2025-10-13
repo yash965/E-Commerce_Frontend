@@ -20,7 +20,7 @@ const loadCart = async () => {
   }
 
   try {
-    const response = await fetch("http://localhost:8080/api/cart", {
+    const response = await fetch("https://book-store-uajv.onrender.com/api/cart", {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -54,7 +54,7 @@ const loadCart = async () => {
   const addItem = async (product) => {
     const token = localStorage.getItem("jwtToken");
     try {
-      await fetch("http://localhost:8080/api/cart", {
+      await fetch("https://book-store-uajv.onrender.com/api/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const loadCart = async () => {
   const removeItem = async (product) => {
     const token = localStorage.getItem("jwtToken");
     try {
-      await fetch(`http://localhost:8080/api/cart/${product.book.id}`, {
+      await fetch(`https://book-store-uajv.onrender.com/api/cart/${product.book.id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

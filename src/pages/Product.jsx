@@ -29,7 +29,7 @@ const Product = () => {
 
     // Send the request to the backend
     try {
-      const response = await fetch("http://localhost:8080/api/cart", {
+      const response = await fetch("https://book-store-uajv.onrender.com/api/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,14 +58,14 @@ const Product = () => {
     const getProduct = async () => {
       setLoading(true);
       setLoading2(true);
-      const response = await fetch(`http://localhost:8080/api/books/${id}`);
+      const response = await fetch(`https://book-store-uajv.onrender.com/api/books/${id}`);
       const data = await response.json();
       setProduct(data);
       setLoading(false);
 
       if (data.category) {
         const response2 = await fetch(
-          `http://localhost:8080/api/books/category/${data.category}`
+          `https://book-store-uajv.onrender.com/api/books/category/${data.category}`
         );
         const data2 = await response2.json();
         setSimilarProducts(data2.filter(p => p.id !== data.id)); // Filter out the current product

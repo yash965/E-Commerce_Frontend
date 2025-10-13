@@ -27,7 +27,7 @@ const Products = () => {
 
     // 2. Send the request to the backend
     try {
-      const response = await fetch("http://localhost:8080/api/cart", {
+      const response = await fetch("https://book-store-uajv.onrender.com/api/cart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +56,7 @@ const Products = () => {
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch("http://localhost:8080/api/books");
+      const response = await fetch("https://book-store-uajv.onrender.com/api/books");
       if (componentMounted) {
         const productData = await response.json();
         setData(productData);
