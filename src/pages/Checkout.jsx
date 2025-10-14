@@ -17,7 +17,7 @@ const Checkout = () => {
       }
 
       try {
-        const response = await fetch("https://book-store-uajv.onrender.com/api/cart", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
           headers: {
             "Authorization": `Bearer ${token}`,
           },
