@@ -27,7 +27,7 @@ const Products = () => {
 
     // 2. Send the request to the backend
     try {
-      const response = await fetch("${process.env.REACT_APP_API_URL}/api/cart", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
