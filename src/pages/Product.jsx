@@ -18,16 +18,16 @@ const Product = () => {
   const dispatch = useDispatch();
 
   // 2. Updated addProduct function with API logic
-  const addProduct = async (productToAdd) => {
+  const addProduct = async (product) => {
     const token = localStorage.getItem("jwtToken");
 
-    // Check if the user is logged in
+    // 1. Check if the user is logged in
     if (!token) {
       toast.error("Please log in to add items to your cart.");
       return;
     }
 
-    // Send the request to the backend
+    // 2. Send the request to the backend
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cart`, {
         method: "POST",
@@ -36,15 +36,16 @@ const Product = () => {
           "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({
-          bookId: productToAdd.id,
+          bookId: product.id,
           quantity: 1,
         }),
       });
 
+      // 3. Handle the response
       if (response.ok) {
         toast.success("Added to cart!");
-        // Dispatch to Redux to update the Navbar count instantly
-        dispatch(addCart(productToAdd));
+        // We still dispatch to Redux to keep the navbar count updated instantly
+        dispatch(addCart(product));
       } else {
         toast.error("Failed to add item. Please try again.");
       }
