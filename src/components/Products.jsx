@@ -45,6 +45,7 @@ const Products = () => {
         // We still dispatch to Redux to keep the navbar count updated instantly
         dispatch(addCart(product));
       } else {
+        console.error("Failed to add to cart:", response.statusText);
         toast.error("Failed to add item. Please try again.");
       }
     } catch (error) {
